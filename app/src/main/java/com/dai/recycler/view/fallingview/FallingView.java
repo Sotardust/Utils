@@ -7,6 +7,10 @@ import android.graphics.Paint;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.ViewTreeObserver;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by dai on 2018/1/12.
@@ -22,10 +26,12 @@ public class FallingView extends View {
 
     private static final int defaultWidth = 600;//默认宽度
     private static final int defaultHeight = 1000;//默认高度
-    private static final int intervalTime = 100;//重绘间隔时间
+    private static final int intervalTime = 50;//重绘间隔时间
 
     private Paint testPaint;
     private int snowY;
+
+    private List<FallObject> fallObjects;
 
     public FallingView(Context context) {
         super(context);
@@ -45,6 +51,7 @@ public class FallingView extends View {
         testPaint.setColor(Color.WHITE);
         testPaint.setStyle(Paint.Style.FILL);
         snowY = 0;
+        fallObjects = new ArrayList<>();
     }
 
     @Override
@@ -74,20 +81,46 @@ public class FallingView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        canvas.drawCircle(100, snowY, 25, testPaint);
-        getHandler().postDelayed(runnable, intervalTime);//间隔一段时间再进行重绘
+        if(fallObjects.size()>0){
+            for (int i=0;i<fallObjects.size();i++) {
+                //然后进行绘制
+                fallObjects.get(i).drawObject(canvas);
+            }
+            // 隔一段时间重绘一次, 动画效果
+            getHandler().postDelayed(runnable, intervalTime);
+        }
+
     }
 
     // 重绘线程
     private Runnable runnable = new Runnable() {
         @Override
         public void run() {
-            snowY += 10;
-            if (snowY > viewHeight) {//超出屏幕则重置雪球位置
-                snowY = 0;
-            }
+//            snowY += 10;
+//            if (snowY > viewHeight) {//超出屏幕则重置雪球位置
+//                snowY = 0;
+//            }
             invalidate();
         }
     };
+    /**
+     * 向View添加下落物体对象
+     * @param fallObject 下落物体对象
+     * @param num
+     */
+    public void addFallObject(final FallObject fallObject, final int num) {
+        getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+            @Override
+            public boolean onPreDraw() {
+                getViewTreeObserver().removeOnPreDrawListener(this);
+                for (int i = 0; i < num; i++) {
+                    FallObject newFallObject = new FallObject(fallObject.builder,viewWidth,viewHeight);
+                    fallObjects.add(newFallObject);
+                }
+                invalidate();
+                return true;
+            }
+        });
+    }
 }
 
