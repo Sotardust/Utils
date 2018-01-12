@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/write_info"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="7"
+            android:background="@drawable/blue_bound"
+            android:gravity="left|top"
+            android:hint="写入文本的信息"
+            android:inputType="textMultiLine"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/write"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="写入" />
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/read"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="读取文件中的数据" />
+
+    <TextView
+        android:id="@+id/show_data"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/blue_bound"
+        android:hint="读取文件中的数据" />
+
+
+</LinearLayout>
