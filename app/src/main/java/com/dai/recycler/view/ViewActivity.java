@@ -11,6 +11,7 @@ import com.dai.recycler.R;
 import com.dai.recycler.util.BaseRecyclerAdapter;
 import com.dai.recycler.util.MainAdapter;
 import com.dai.recycler.view.fallingview.FallingActivity;
+import com.dai.recycler.view.musicbutton.MusicActivity;
 
 import java.util.ArrayList;
 
@@ -46,7 +47,7 @@ public class ViewActivity extends AppCompatActivity {
 
         ArrayList<String> data = new ArrayList<>();
         data.add("雪花飘落");
-//        data.add("sqlite");
+        data.add("音乐旋转");
 //        data.add("file I/O 流");
 //        data.add("rollView");
 //        data.add("service");
@@ -66,10 +67,10 @@ public class ViewActivity extends AppCompatActivity {
                         Intent intent = new Intent(getApplicationContext(), FallingActivity.class);
                         startActivity(intent);
                         break;
-//                    case 1:
-//                        Intent intent1 = new Intent(getApplicationContext(), SQLiteActivity.class);
-//                        startActivity(intent1);
-//                        break;
+                    case 1:
+                        Intent intent1 = new Intent(getApplicationContext(), MusicActivity.class);
+                        startActivity(intent1);
+                        break;
 //                    case 2:
 //                        Intent intent2 = new Intent(getApplicationContext(), FileActivity.class);
 //                        startActivity(intent2);

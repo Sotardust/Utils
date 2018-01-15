@@ -201,7 +201,7 @@ public class FallObject {
     private void moveX() {
         presentX += defaultWindSpeed * Math.sin(angle);
         if (isWindChange) {
-            angle += (float) (random.nextBoolean() ? -1 : 1) * Math.random() * 0.0025;
+            angle += (float) (random.nextBoolean() ? -1 : 1) * Math.random() * 0.025;
         }
     }
 

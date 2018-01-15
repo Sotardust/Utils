@@ -30,6 +30,7 @@
         <activity android:name=".view.bookpageview.BookPageViewActivity" />
         <activity android:name=".view.ViewActivity" />
         <activity android:name=".view.fallingview.FallingActivity" />
+        <activity android:name=".view.musicbutton.MusicActivity" />
 
         <service android:name=".service.MyService" />
         <service
