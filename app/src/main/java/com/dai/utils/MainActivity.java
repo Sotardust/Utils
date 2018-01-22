@@ -13,8 +13,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Display;
 import android.view.WindowManager;
 
-import com.dai.utils.R;
 import com.dai.utils.aidl.AidlActivity;
+import com.dai.utils.animation.AnimationActivity;
 import com.dai.utils.broadcast.BroadCastActivity;
 import com.dai.utils.file.FileActivity;
 import com.dai.utils.rollview.RollActivity;
@@ -57,13 +57,14 @@ public class MainActivity extends AppCompatActivity {
         }
         ArrayList<String> data = new ArrayList<>();
         data.add("RecyclerView");
-        data.add("sqlite");
-        data.add("file I/O 流");
+        data.add("数据库 sqlite");
+        data.add("文件 file I/O 流");
         data.add("rollView");
-        data.add("service");
-        data.add("aidl");
-        data.add("broadcast");
-        data.add("view");
+        data.add("服务 service");
+        data.add("android接口定义语言 aidl");
+        data.add("广播 broadcast");
+        data.add("视图 view");
+        data.add("动画 Property Animation");
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
         MainAdapter adapter = new MainAdapter();
@@ -104,6 +105,10 @@ public class MainActivity extends AppCompatActivity {
                     case 7:
                         Intent intent7 = new Intent(getApplicationContext(), ViewActivity.class);
                         startActivity(intent7);
+                        break;
+                    case 8:
+                        Intent intent8 = new Intent(getApplicationContext(), AnimationActivity.class);
+                        startActivity(intent8);
                         break;
                 }
             }
