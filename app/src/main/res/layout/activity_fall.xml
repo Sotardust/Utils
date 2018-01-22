@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.dai.recycler.view.fallingview.FallingView
+    <com.dai.utils.view.fallingview.FallingView
         android:id="@+id/falling_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

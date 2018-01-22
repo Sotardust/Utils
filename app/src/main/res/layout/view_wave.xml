@@ -13,7 +13,7 @@
         android:gravity="center"
       >
 
-        <com.dai.recycler.view.waveprogressview.WaveProgressView
+        <com.dai.utils.view.waveprogressview.WaveProgressView
             android:id="@+id/wave_progress"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

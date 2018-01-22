@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.dai.recycler">
+    package="com.dai.utils">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -13,32 +13,32 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name="com.dai.utils.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".sqlite.SQLiteActivity" />
-        <activity android:name=".file.FileActivity" />
-        <activity android:name=".RecyclerActivity" />
-        <activity android:name=".rollview.RollActivity" />
-        <activity android:name=".service.ServiceActivity" />
-        <activity android:name=".aidl.AidlActivity" />
-        <activity android:name=".broadcast.BroadCastActivity" />
-        <activity android:name=".view.bookpageview.BookPageViewActivity" />
-        <activity android:name=".view.ViewActivity" />
-        <activity android:name=".view.fallingview.FallingActivity" />
-        <activity android:name=".view.musicbutton.MusicActivity" />
+        <activity android:name="com.dai.utils.sqlite.SQLiteActivity" />
+        <activity android:name="com.dai.utils.file.FileActivity" />
+        <activity android:name="com.dai.utils.RecyclerActivity" />
+        <activity android:name="com.dai.utils.rollview.RollActivity" />
+        <activity android:name="com.dai.utils.service.ServiceActivity" />
+        <activity android:name="com.dai.utils.aidl.AidlActivity" />
+        <activity android:name="com.dai.utils.broadcast.BroadCastActivity" />
+        <activity android:name="com.dai.utils.view.bookpageview.BookPageViewActivity" />
+        <activity android:name="com.dai.utils.view.ViewActivity" />
+        <activity android:name="com.dai.utils.view.fallingview.FallingActivity" />
+        <activity android:name="com.dai.utils.view.musicbutton.MusicActivity" />
 
-        <service android:name=".service.MyService" />
+        <service android:name="com.dai.utils.service.MyService" />
         <service
-            android:name=".service.MyService2"
+            android:name="com.dai.utils.service.MyService2"
             android:enabled="true"
             android:exported="true" />
         <service
-            android:name=".aidl.MyService"
+            android:name="com.dai.utils.aidl.MyService"
             android:enabled="true"
             android:exported="true"></service>
     </application>
