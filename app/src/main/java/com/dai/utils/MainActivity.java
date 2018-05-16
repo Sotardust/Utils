@@ -16,6 +16,7 @@ import android.view.WindowManager;
 import com.dai.utils.aidl.AidlActivity;
 import com.dai.utils.animation.AnimationActivity;
 import com.dai.utils.broadcast.BroadCastActivity;
+import com.dai.utils.dialog.DialogActivity;
 import com.dai.utils.file.FileActivity;
 import com.dai.utils.rollview.RollActivity;
 import com.dai.utils.service.ServiceActivity;
@@ -65,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
         data.add("广播 broadcast");
         data.add("视图 view");
         data.add("动画 Property Animation");
+        data.add("弹窗 DialogFragment");
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
         MainAdapter adapter = new MainAdapter();
@@ -109,6 +111,10 @@ public class MainActivity extends AppCompatActivity {
                     case 8:
                         Intent intent8 = new Intent(getApplicationContext(), AnimationActivity.class);
                         startActivity(intent8);
+                        break;
+                    case 9:
+                        Intent intent9 = new Intent(getApplicationContext(), DialogActivity.class);
+                        startActivity(intent9);
                         break;
                 }
             }

@@ -32,6 +32,7 @@
         <activity android:name="com.dai.utils.view.fallingview.FallingActivity" />
         <activity android:name="com.dai.utils.view.musicbutton.MusicActivity" />
         <activity android:name=".animation.AnimationActivity" />
+        <activity android:name=".dialog.DialogActivity" />
 
         <service android:name="com.dai.utils.service.MyService" />
         <service
