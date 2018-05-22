@@ -29,7 +29,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
     private static final String DELETE_TABLE = "DROP TABLE IF EXISTS " + TABLE_NAME;
 
-    public SQLiteHelper(Context context) {
+    SQLiteHelper(Context context) {
         super(context,DB_NAME, null, DB_VERSION);
     }
 
