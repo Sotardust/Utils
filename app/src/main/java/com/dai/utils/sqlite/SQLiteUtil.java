@@ -6,6 +6,8 @@ import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import com.dai.utils.UtilApplication;
+
 import java.util.ArrayList;
 
 /**
@@ -18,20 +20,38 @@ public class SQLiteUtil {
 
     private SQLiteHelper sqLiteHelper;
 
+    private static SQLiteDatabase database;
+
+    private static SQLiteDatabase getInstance() {
+        System.out.println("getInstance() = " + database);
+        if (database == null) {
+            synchronized (SQLiteUtil.class) {
+                if (database == null) {
+                    database = new SQLiteHelper(UtilApplication.getInstance()).getWritableDatabase();
+                }
+            }
+        }
+        System.out.println("database1111 = " + database);
+        return database;
+    }
+
+
     // 列定义
     private static final String[] COLUMNS = new String[]{"id", "name", "age", "sex"};
 
     public SQLiteUtil(DatabaseContext context) {
 
-        sqLiteHelper = new SQLiteHelper(context);
+        System.out.println("U = " + UtilApplication.getInstance());
+//        sqLiteHelper = new SQLiteHelper(context);
     }
+
 
     //查找所有数据
     public ArrayList<UserInfo> getAllData() {
-        SQLiteDatabase database = null;
+        SQLiteDatabase database = getInstance();
         Cursor cursor = null;
         try {
-            database = sqLiteHelper.getWritableDatabase();
+//            database = sqLiteHelper.getWritableDatabase();
             cursor = database.query(SQLiteHelper.TABLE_NAME, COLUMNS, null, null, null, null, null);
 
             if (cursor.getCount() > 0) {
@@ -56,10 +76,10 @@ public class SQLiteUtil {
 
     // 插入一条数据
     public boolean insertData(UserInfo userInfo) {
-        SQLiteDatabase database = null;
+        SQLiteDatabase database = getInstance();
         Cursor cursor = null;
         try {
-            database = sqLiteHelper.getWritableDatabase();
+//            database = sqLiteHelper.getWritableDatabase();
             database.beginTransaction();
             ContentValues cv = new ContentValues();
 //            cv.put(SQLiteHelper.ID, userInfo.getId());
@@ -82,9 +102,9 @@ public class SQLiteUtil {
 
     //修改某一条数据
     public boolean updateUserInfo(UserInfo userInfo, String name) {
-        SQLiteDatabase database = null;
+        SQLiteDatabase database = getInstance();
         try {
-            database = sqLiteHelper.getWritableDatabase();
+//            database = sqLiteHelper.getWritableDatabase();
             database.beginTransaction();
             // update userInfo set name = ? where name = getname
             ContentValues cv = new ContentValues();
@@ -107,9 +127,9 @@ public class SQLiteUtil {
 
     //删除一条数据
     public boolean deleteData(int id) {
-        SQLiteDatabase database = null;
+        SQLiteDatabase database = getInstance();
         try {
-            database = sqLiteHelper.getWritableDatabase();
+//            database = sqLiteHelper.getWritableDatabase();
             database.beginTransaction();
             database.delete(SQLiteHelper.TABLE_NAME, SQLiteHelper.ID + "= ?", new String[]{String.valueOf(id)});
             database.setTransactionSuccessful();
@@ -127,10 +147,10 @@ public class SQLiteUtil {
 
     // 查找某几条数据
     public ArrayList<UserInfo> findUserInfo(String name) {
-        SQLiteDatabase database = null;
+        SQLiteDatabase database = getInstance();
         Cursor cursor = null;
         try {
-            database = sqLiteHelper.getWritableDatabase();
+//            database = sqLiteHelper.getWritableDatabase();
             // select * from Orders where CustomName = 'Bor'
             cursor = database.query(SQLiteHelper.TABLE_NAME, COLUMNS, SQLiteHelper.NAME + "=?", new String[]{name}, null, null, null);
             ArrayList<UserInfo> userInfos = new ArrayList<>();
@@ -156,10 +176,10 @@ public class SQLiteUtil {
     // 统计查询name 为（name）的用户总数
     public int getNameCount(String name) {
         int count = 0;
-        SQLiteDatabase database = null;
+        SQLiteDatabase database = getInstance();
         Cursor cursor = null;
         try {
-            database = sqLiteHelper.getReadableDatabase();
+//            database = sqLiteHelper.getReadableDatabase();
             // select count(Id) from Orders where Country = 'China'
             cursor = database.query(SQLiteHelper.TABLE_NAME, new String[]{"COUNT(id)"}, "name = ?", new String[]{name}, null, null, null);
             if (cursor.moveToFirst()) {
@@ -180,10 +200,10 @@ public class SQLiteUtil {
 
     //比较查询 此处查询比较年龄最小的用户
     public UserInfo getMinAgeUser() {
-        SQLiteDatabase database = null;
+        SQLiteDatabase database = getInstance();
         Cursor cursor = null;
         try {
-            database = sqLiteHelper.getReadableDatabase();
+//            database = sqLiteHelper.getReadableDatabase();
             // select Id, CustomName, Max(OrderPrice) as OrderPrice, Country from Orders
             cursor = database.query(SQLiteHelper.TABLE_NAME, new String[]{"id", "name", "Max(age) as age", "sex"}, null, null, null, null, null);
             if (cursor.getCount() > 0) {
@@ -215,4 +235,5 @@ public class SQLiteUtil {
         userInfo.setSex(cursor.getString(cursor.getColumnIndex(SQLiteHelper.SEX)));
         return userInfo;
     }
+
 }
