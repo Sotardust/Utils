@@ -33,6 +33,7 @@
         <activity android:name="com.dai.utils.view.musicbutton.MusicActivity" />
         <activity android:name=".animation.AnimationActivity" />
         <activity android:name=".dialog.DialogActivity" />
+        <activity android:name=".loadmore.LoadMoreActivity" />
 
         <service android:name="com.dai.utils.service.MyService" />
         <service

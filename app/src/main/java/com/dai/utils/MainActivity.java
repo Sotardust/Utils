@@ -18,6 +18,7 @@ import com.dai.utils.animation.AnimationActivity;
 import com.dai.utils.broadcast.BroadCastActivity;
 import com.dai.utils.dialog.DialogActivity;
 import com.dai.utils.file.FileActivity;
+import com.dai.utils.loadmore.LoadMoreActivity;
 import com.dai.utils.rollview.RollActivity;
 import com.dai.utils.service.ServiceActivity;
 import com.dai.utils.sqlite.SQLiteActivity;
@@ -89,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent2);
                         break;
                     case 3:
-                        Intent intent3 = new Intent(getApplicationContext(), RollActivity.class);
+                        Intent intent3 = new Intent(getApplicationContext(), LoadMoreActivity.class);
                         startActivity(intent3);
                         break;
                     case 4:
